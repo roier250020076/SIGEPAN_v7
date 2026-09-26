@@ -80,11 +80,11 @@ public class Inventario extends JFrame implements ActualizableIdioma {
 		setBounds(100, 100, 1050, 680);
 
 		// Paleta de colores unificada (Identidad Visual de la Panadería)
-		Color colorFondo = new Color(253, 251, 247);      // Crema suave
-		Color colorCafeOscuro = new Color(74, 53, 37);    // Café espresso profundo
-		Color colorCafeCalido = new Color(139, 94, 60);   // Café dorado
-		Color colorBordeSuave = new Color(222, 212, 198);  // Tono arena sutil
-		Color colorGrisTexto = new Color(120, 110, 100);  // Gris cálido elegante
+		Color colorFondo = EstiloUI.FONDO;      // Crema suave
+		Color colorCafeOscuro = EstiloUI.TEXTO;    // Café espresso profundo
+		Color colorCafeCalido = EstiloUI.ACENTO;   // Café dorado
+		Color colorBordeSuave = EstiloUI.BORDE;  // Tono arena sutil
+		Color colorGrisTexto = EstiloUI.SECUNDARIO;  // Gris cálido elegante
 
 		// BARRA DE MENÚ SUPERIOR
 		JMenuBar menuBar = new JMenuBar();
@@ -187,7 +187,7 @@ public class Inventario extends JFrame implements ActualizableIdioma {
 		lblExistentes.setBounds(25, 75, 200, 20);
 		contentPane.add(lblExistentes);
 
-		JPanel panelTabla = new JPanel();
+		JPanel panelTabla = new EstiloUI.Tarjeta();
 		panelTabla.setBackground(Color.WHITE);
 		panelTabla.setBorder(new LineBorder(colorBordeSuave, 1));
 		panelTabla.setBounds(25, 105, 480, 470);
@@ -210,7 +210,7 @@ public class Inventario extends JFrame implements ActualizableIdioma {
 			public boolean isCellEditable(int row, int column) { return false; }
 		};
 		
-		tablaExistentes = new JTable(modeloExistentes);
+		tablaExistentes = new EstiloUI.Tabla(modeloExistentes);
 		tablaExistentes.setFont(new Font("Segoe UI", Font.PLAIN, 13));
 		tablaExistentes.setRowHeight(24);
 		tablaExistentes.setGridColor(new Color(245, 245, 245));
@@ -244,7 +244,7 @@ public class Inventario extends JFrame implements ActualizableIdioma {
 		lblNuevo.setBounds(535, 75, 400, 20);
 		contentPane.add(lblNuevo);
 
-		JPanel panelRegistro = new JPanel();
+		JPanel panelRegistro = new EstiloUI.Tarjeta();
 		panelRegistro.setBackground(Color.WHITE);
 		panelRegistro.setBorder(new LineBorder(colorBordeSuave, 1));
 		panelRegistro.setBounds(535, 105, 490, 470);
@@ -376,6 +376,7 @@ public class Inventario extends JFrame implements ActualizableIdioma {
 		controlador = new ControladorInventario(this);
 
 		// NUEVO: ventana autoajustable (SIGEPAN v6), ver Vista.Redimensionable.
+		EstiloUI.aplicar(this, mnInventario);
 		Redimensionable.activar(this, contentPane, 1050, 680);
 	}
 

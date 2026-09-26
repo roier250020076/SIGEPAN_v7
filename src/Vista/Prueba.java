@@ -69,11 +69,11 @@ public class Prueba extends JFrame implements ActualizableIdioma {
 		setBounds(100, 100, 620, 460);
 
 		// Paleta de colores cálida y fresca de panadería
-		Color colorFondo = new Color(253, 251, 247); // Crema suave
-		Color colorCafeOscuro = new Color(74, 53, 37); // Café espresso profundo
-		Color colorCafeCalido = new Color(139, 94, 60); // Café dorado para botones principales
-		Color colorBordeSuave = new Color(222, 212, 198); // Tono arena sutil para la tarjeta
-		Color colorGrisTexto = new Color(120, 110, 100); // Gris cálido elegante
+		Color colorFondo = EstiloUI.FONDO; // Crema suave
+		Color colorCafeOscuro = EstiloUI.TEXTO; // Café espresso profundo
+		Color colorCafeCalido = EstiloUI.ACENTO; // Café dorado para botones principales
+		Color colorBordeSuave = EstiloUI.BORDE; // Tono arena sutil para la tarjeta
+		Color colorGrisTexto = EstiloUI.SECUNDARIO; // Gris cálido elegante
 
 		Ventana1 = new JPanel();
 		Ventana1.setBackground(colorFondo);
@@ -84,10 +84,10 @@ public class Prueba extends JFrame implements ActualizableIdioma {
 		// ===================================
 		// PANEL LOGIN (Diseño de tarjeta moderna)
 		// ===================================
-		JPanel Login = new JPanel();
+		JPanel Login = new EstiloUI.Tarjeta();
 		Login.setBackground(Color.WHITE);
 		Login.setBorder(new LineBorder(colorBordeSuave, 1));
-		Login.setBounds(275, 25, 305, 300);
+		Login.setBounds(275, 25, 305, 340);
 		Ventana1.add(Login);
 		Login.setLayout(null);
 
@@ -115,7 +115,7 @@ public class Prueba extends JFrame implements ActualizableIdioma {
 		textField_Usuario = new JTextField();
 		textField_Usuario.setFont(new Font("Segoe UI", Font.PLAIN, 13));
 		textField_Usuario.setBorder(new LineBorder(colorBordeSuave, 1));
-		textField_Usuario.setBounds(45, 110, 215, 26);
+		textField_Usuario.setBounds(45, 110, 215, 32);
 		Login.add(textField_Usuario);
 		textField_Usuario.setColumns(10);
 
@@ -129,7 +129,7 @@ public class Prueba extends JFrame implements ActualizableIdioma {
 		textField_Contraseña = new JPasswordField();
 		textField_Contraseña.setFont(new Font("Segoe UI", Font.PLAIN, 13));
 		textField_Contraseña.setBorder(new LineBorder(colorBordeSuave, 1));
-		textField_Contraseña.setBounds(45, 170, 215, 26);
+		textField_Contraseña.setBounds(45, 170, 215, 32);
 		Login.add(textField_Contraseña);
 
 		// BOTÓN INICIAR SESIÓN (Estilo destacado)
@@ -139,7 +139,7 @@ public class Prueba extends JFrame implements ActualizableIdioma {
 		iniciar_sesion.setForeground(Color.WHITE);
 		iniciar_sesion.setBorder(null);
 		iniciar_sesion.setFocusable(false);
-		iniciar_sesion.setBounds(45, 215, 215, 32);
+		iniciar_sesion.setBounds(45, 225, 215, 38);
 		Login.add(iniciar_sesion);
 
 		// ICONOS DEL LOGIN (Ajustados con respecto a las cajas de texto grandes)
@@ -195,6 +195,7 @@ public class Prueba extends JFrame implements ActualizableIdioma {
 		// [MVC - VISTA A CONTROLADOR]: Vinculación del evento del botón con el método
 		// del controlador.
 		iniciar_sesion.addActionListener(e -> controlador.iniciarSesion());
+		EstiloUI.aplicar(this, null);
 	}
 
 	// [MVC - VISTA]: Métodos de acceso (Getters) para que el Controlador pueda

@@ -95,11 +95,11 @@ public class Registro extends JFrame implements ActualizableIdioma {
 		setBounds(100, 100, 550, 560);
 		
 		// PALETA DE COLORES PERSONALIZADA (Temática de Cafetería)
-		Color colorFondo = new Color(253, 251, 247);      // Crema suave
-		Color colorCafeOscuro = new Color(74, 53, 37);    // Café espresso profundo
-		Color colorCafeCalido = new Color(139, 94, 60);   // Café dorado para el botón principal
-		Color colorBordeSuave = new Color(222, 212, 198);  // Tono arena sutil
-		Color colorGrisTexto = new Color(120, 110, 100);  // Gris cálido elegante
+		Color colorFondo = EstiloUI.FONDO;      // Crema suave
+		Color colorCafeOscuro = EstiloUI.TEXTO;    // Café espresso profundo
+		Color colorCafeCalido = EstiloUI.ACENTO;   // Café dorado para el botón principal
+		Color colorBordeSuave = EstiloUI.BORDE;  // Tono arena sutil
+		Color colorGrisTexto = EstiloUI.SECUNDARIO;  // Gris cálido elegante
 
 		VentanaRegistro = new JPanel();
 		VentanaRegistro.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -108,7 +108,7 @@ public class Registro extends JFrame implements ActualizableIdioma {
 		VentanaRegistro.setLayout(null);
 		
 		// Panel Contenedor Blanco
-		JPanel panel = new JPanel();
+		JPanel panel = new EstiloUI.Tarjeta();
 		panel.setBackground(Color.WHITE);
 		panel.setBorder(new LineBorder(colorBordeSuave, 1));
 		panel.setBounds(15, 115, 505, 340);
@@ -374,6 +374,7 @@ public class Registro extends JFrame implements ActualizableIdioma {
 		lblDecoracion.setIcon(new ImageIcon(Registro.class.getResource("/imagenes/images-Photoroom23.png")));
 		lblDecoracion.setBounds(330, 15, 190, 95);
 		VentanaRegistro.add(lblDecoracion);
+		EstiloUI.aplicar(this, null);
 	}
 	
 	// =================================================================

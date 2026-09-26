@@ -86,11 +86,11 @@ public class pedidos extends JFrame implements ActualizableIdioma {
 		setBounds(100, 100, 1050, 730);
 
 		// PALETA DE COLORES
-		Color colorFondo = new Color(253, 251, 247);      // Crema
-		Color colorCafeOscuro = new Color(74, 53, 37);    // Café obscuro
-		Color colorCafeCalido = new Color(139, 94, 60);   // Café dorado
-		Color colorBordeSuave = new Color(222, 212, 198);  // Tono arena
-		Color colorGrisTexto = new Color(120, 110, 100);  // Gris cálido
+		Color colorFondo = EstiloUI.FONDO;      // Crema
+		Color colorCafeOscuro = EstiloUI.TEXTO;    // Café obscuro
+		Color colorCafeCalido = EstiloUI.ACENTO;   // Café dorado
+		Color colorBordeSuave = EstiloUI.BORDE;  // Tono arena
+		Color colorGrisTexto = EstiloUI.SECUNDARIO;  // Gris cálido
 
 		// BARRA DE MENÚ SUPERIOR Y SISTEMA DE IDIOMA
 		JMenuBar menuBar = new JMenuBar();
@@ -158,7 +158,7 @@ public class pedidos extends JFrame implements ActualizableIdioma {
 		contentPane.add(lblTitulo);
 
 		// TABLA DE PEDIDOS (Lado Izquierdo)
-		JPanel panelTabla = new JPanel();
+		JPanel panelTabla = new EstiloUI.Tarjeta();
 		panelTabla.setBackground(Color.WHITE);
 		panelTabla.setBorder(new LineBorder(colorBordeSuave, 1));
 		panelTabla.setBounds(25, 85, 480, 500);
@@ -183,14 +183,14 @@ public class pedidos extends JFrame implements ActualizableIdioma {
 		modelo.addColumn(Idioma.get("pedidos.columnaSubtotal"));
 		modelo.addColumn(Idioma.get("pedidos.columnaEstado"));
 		
-		tablaPedidos = new JTable(modelo);
+		tablaPedidos = new EstiloUI.Tabla(modelo);
 		tablaPedidos.setFont(new Font("Segoe UI", Font.PLAIN, 13));
 		tablaPedidos.setRowHeight(22);
 		tablaPedidos.setGridColor(new Color(245, 245, 245));
 		scrollPane.setViewportView(tablaPedidos);
 
 		// PANEL FORMULARIO (Lado Derecho)
-		JPanel panelFormulario = new JPanel();
+		JPanel panelFormulario = new EstiloUI.Tarjeta();
 		panelFormulario.setBackground(Color.WHITE);
 		panelFormulario.setBorder(new LineBorder(colorBordeSuave, 1));
 		panelFormulario.setBounds(535, 85, 490, 500);
@@ -441,6 +441,7 @@ public class pedidos extends JFrame implements ActualizableIdioma {
 		btnGuardarPedido.addActionListener(e -> controlador.guardarPedido());
 
 		// Activa el diseño responsive/autoajustable al maximizar
+		EstiloUI.aplicar(this, mnPedidos);
 		Redimensionable.activar(this, contentPane, 1050, 730);
 	}
 
