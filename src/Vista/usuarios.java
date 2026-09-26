@@ -75,11 +75,11 @@ public class usuarios extends JFrame implements ActualizableIdioma {
 		setBounds(100, 100, 740, 560); 
 
 		// PALETA DE COLORES PERSONALIZADA (Temática Panadería)
-		Color colorFondo = new Color(253, 251, 247);      // Crema suave
-		Color colorCafeOscuro = new Color(74, 53, 37);    // Café espresso profundo
-		Color colorCafeCalido = new Color(139, 94, 60);   // Café dorado para botones
-		Color colorBordeSuave = new Color(222, 212, 198);  // Tono arena sutil
-		Color colorGrisTexto = new Color(120, 110, 100);  // Gris cálido elegante
+		Color colorFondo = EstiloUI.FONDO;      // Crema suave
+		Color colorCafeOscuro = EstiloUI.TEXTO;    // Café espresso profundo
+		Color colorCafeCalido = EstiloUI.ACENTO;   // Café dorado para botones
+		Color colorBordeSuave = EstiloUI.BORDE;  // Tono arena sutil
+		Color colorGrisTexto = EstiloUI.SECUNDARIO;  // Gris cálido elegante
 
 		// =================================================================
 		// BARRA DE MENÚ SUPERIOR UNIFICADA
@@ -205,7 +205,7 @@ public class usuarios extends JFrame implements ActualizableIdioma {
 		// =================================================================
 		// PANEL DE LA TABLA Y CONFIGURACIÓN DE SOLO LECTURA
 		// =================================================================
-		JPanel panelTabla = new JPanel();
+		JPanel panelTabla = new EstiloUI.Tarjeta();
 		panelTabla.setBackground(Color.WHITE);
 		panelTabla.setBorder(new LineBorder(colorBordeSuave, 1));
 		panelTabla.setBounds(25, 95, 670, 375);
@@ -234,7 +234,7 @@ public class usuarios extends JFrame implements ActualizableIdioma {
 		modelo.addColumn(Idioma.get("usuarios.columnaUsuario"));
 		modelo.addColumn(Idioma.get("usuarios.columnaRol"));
 
-		tablaUsuarios = new JTable(modelo);
+		tablaUsuarios = new EstiloUI.Tabla(modelo);
 		tablaUsuarios.setFont(new Font("Segoe UI", Font.PLAIN, 13));
 		tablaUsuarios.setRowHeight(24);
 		tablaUsuarios.setGridColor(new Color(245, 245, 245));
@@ -289,6 +289,7 @@ public class usuarios extends JFrame implements ActualizableIdioma {
 		btnRegistrar.addActionListener(e -> controlador.abrirRegistroDesdeUsuarios());
 
 		// Activa el redimensionamiento dinámico responsive de la interfaz
+		EstiloUI.aplicar(this, mnUsuarios);
 		Redimensionable.activar(this, contentPane, 740, 560);
 	}
 

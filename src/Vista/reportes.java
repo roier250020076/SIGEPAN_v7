@@ -79,11 +79,11 @@ public class reportes extends JFrame implements ActualizableIdioma {
         setBounds(100, 100, 980, 650);
 
         // PALETA DE COLORES PERSONALIZADA (Temática Panadería)
-        Color fondo = new Color(253, 251, 247);  // Crema suave
-        Color cafe = new Color(74, 53, 37);      // Café espresso profundo
-        Color dorado = new Color(139, 94, 60);   // Café dorado para resaltados
-        Color borde = new Color(222, 212, 198);  // Tono arena sutil
-        Color gris = new Color(120, 110, 100);   // Gris cálido elegante
+        Color fondo = EstiloUI.FONDO;  // Crema suave
+        Color cafe = EstiloUI.TEXTO;      // Café espresso profundo
+        Color dorado = EstiloUI.ACENTO;   // Café dorado para resaltados
+        Color borde = EstiloUI.BORDE;  // Tono arena sutil
+        Color gris = EstiloUI.SECUNDARIO;   // Gris cálido elegante
 
         // Construcción de la barra de navegación superior
         crearMenu(borde);
@@ -172,6 +172,7 @@ public class reportes extends JFrame implements ActualizableIdioma {
         new ControladorReporte(this);
 
         // Habilita el redimensionamiento responsivo dinámico
+        EstiloUI.aplicar(this, mnReportes);
         Redimensionable.activar(this, contentPane, 980, 650);
     }
 
@@ -224,7 +225,7 @@ public class reportes extends JFrame implements ActualizableIdioma {
     }
     
     private JPanel tarjeta(int x, int y, int ancho, int alto, Color borde) { 
-        JPanel panel = new JPanel(null); 
+        JPanel panel = new EstiloUI.Tarjeta(null);
         panel.setBackground(Color.WHITE); 
         panel.setBorder(new LineBorder(borde, 1)); 
         panel.setBounds(x, y, ancho, alto); 
@@ -252,7 +253,7 @@ public class reportes extends JFrame implements ActualizableIdioma {
     }
     
     private JTable crearTabla(DefaultTableModel modelo) { 
-        JTable tabla = new JTable(modelo); 
+        JTable tabla = new EstiloUI.Tabla(modelo);
         tabla.setRowHeight(24); 
         tabla.setFont(new Font("Segoe UI", Font.PLAIN, 12)); 
         tabla.setGridColor(new Color(245, 245, 245)); 

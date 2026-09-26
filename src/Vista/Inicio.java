@@ -78,11 +78,11 @@ public class Inicio extends JFrame implements ActualizableIdioma {
 		setBounds(100, 100, 720, 590); // Dimensiones de la ventana principal
 
 		// PALETA DE COLORES ARTESANAL (Identidad Corporativa de la Panadería)
-		Color colorFondo = new Color(253, 251, 247);      // Crema suave de fondo
-		Color colorCafeOscuro = new Color(74, 53, 37);    // Café espresso para textos y títulos
-		Color colorCafeCalido = new Color(139, 94, 60);   // Café cálido para botones principales
-		Color colorBordeSuave = new Color(222, 212, 198);  // Tono arena sutil para contenedores
-		Color colorGrisTexto = new Color(110, 100, 90);   // Gris cálido para subtítulos
+		Color colorFondo = EstiloUI.FONDO;      // Crema suave de fondo
+		Color colorCafeOscuro = EstiloUI.TEXTO;    // Café espresso para textos y títulos
+		Color colorCafeCalido = EstiloUI.ACENTO;   // Café cálido para botones principales
+		Color colorBordeSuave = EstiloUI.BORDE;  // Tono arena sutil para contenedores
+		Color colorGrisTexto = EstiloUI.SECUNDARIO;   // Gris cálido para subtítulos
 
 		// =================================================================
 		// MENÚ SUPERIOR ESTILIZADO Y NAVEGACIÓN
@@ -195,7 +195,7 @@ public class Inicio extends JFrame implements ActualizableIdioma {
 		// =================================================================
 		// PANEL IZQUIERDO: PRODUCTOS DISPONIBLES (CATÁLOGO MAESTRO)
 		// =================================================================
-		JPanel panelProductos = new JPanel();
+		JPanel panelProductos = new EstiloUI.Tarjeta();
 		panelProductos.setBackground(Color.WHITE);
 		panelProductos.setBorder(new LineBorder(colorBordeSuave, 1));
 		panelProductos.setBounds(25, 120, 310, 290);
@@ -215,7 +215,7 @@ public class Inicio extends JFrame implements ActualizableIdioma {
 		panelProductos.add(scrollPaneProductos);
 		
 		//tabla productos
-		tablaProductos = new JTable();
+		tablaProductos = new EstiloUI.Tabla();
 		tablaProductos.setFont(new Font("Segoe UI", Font.PLAIN, 13));
 		tablaProductos.setRowHeight(22);
 		tablaProductos.setGridColor(new Color(245, 245, 245));
@@ -236,7 +236,7 @@ public class Inicio extends JFrame implements ActualizableIdioma {
 		// =================================================================
 		// PANEL DERECHO: CARRITO DE COMPRA (VENTA ACTUAL)
 		// =================================================================
-		JPanel panelCarrito = new JPanel();
+		JPanel panelCarrito = new EstiloUI.Tarjeta();
 		panelCarrito.setBackground(Color.WHITE);
 		panelCarrito.setBorder(new LineBorder(colorBordeSuave, 1));
 		panelCarrito.setBounds(360, 120, 320, 290);
@@ -256,7 +256,7 @@ public class Inicio extends JFrame implements ActualizableIdioma {
 		panelCarrito.add(scrollPaneCarrito);
 
 		// NOTA: Esta JTable no tiene modelo asignado aquí, su estructura se la inyecta el controlador dinámicamente
-		tablaCarrito = new JTable();
+		tablaCarrito = new EstiloUI.Tabla();
 		tablaCarrito.setFont(new Font("Segoe UI", Font.PLAIN, 13));
 		tablaCarrito.setRowHeight(22);
 		tablaCarrito.setGridColor(new Color(245, 245, 245));
@@ -265,7 +265,7 @@ public class Inicio extends JFrame implements ActualizableIdioma {
 		// =================================================================
 		// PANEL INFERIOR: TOTALIZADOR Y ACCIONES DE COBRO
 		// =================================================================
-		JPanel panelTotal = new JPanel();
+		JPanel panelTotal = new EstiloUI.Tarjeta();
 		panelTotal.setBackground(Color.WHITE);
 		panelTotal.setBorder(new LineBorder(colorBordeSuave, 1));
 		panelTotal.setBounds(25, 430, 655, 75);
@@ -327,6 +327,7 @@ public class Inicio extends JFrame implements ActualizableIdioma {
 		controlador = new ControladorPedido(this);
 
 		// NUEVO: ventana autoajustable (SIGEPAN v6), ver Vista.Redimensionable.
+		EstiloUI.aplicar(this, mnInicio);
 		Redimensionable.activar(this, contentPane, 720, 590);
 	}
 

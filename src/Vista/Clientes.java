@@ -81,11 +81,11 @@ public class Clientes extends JFrame implements ActualizableIdioma {
 		setBounds(100, 100, 740, 560);
 
 		// Misma paleta de colores que el resto de la aplicación.
-		Color colorFondo = new Color(253, 251, 247);      // Crema suave
-		Color colorCafeOscuro = new Color(74, 53, 37);    // Café espresso profundo
-		Color colorCafeCalido = new Color(139, 94, 60);   // Café dorado para botones secundarios
-		Color colorBordeSuave = new Color(222, 212, 198);  // Tono arena sutil
-		Color colorGrisTexto = new Color(120, 110, 100);  // Gris cálido elegante
+		Color colorFondo = EstiloUI.FONDO;      // Crema suave
+		Color colorCafeOscuro = EstiloUI.TEXTO;    // Café espresso profundo
+		Color colorCafeCalido = EstiloUI.ACENTO;   // Café dorado para botones secundarios
+		Color colorBordeSuave = EstiloUI.BORDE;  // Tono arena sutil
+		Color colorGrisTexto = EstiloUI.SECUNDARIO;  // Gris cálido elegante
 
 		// BARRA DE MENÚ SUPERIOR UNIFICADA
 		JMenuBar menuBar = new JMenuBar();
@@ -206,7 +206,7 @@ public class Clientes extends JFrame implements ActualizableIdioma {
 		contentPane.add(btnBuscar);
 
 		// CONTENEDOR BLANCO PARA LA TABLA (Tarjeta flotante)
-		JPanel panelTabla = new JPanel();
+		JPanel panelTabla = new EstiloUI.Tarjeta();
 		panelTabla.setBackground(Color.WHITE);
 		panelTabla.setBorder(new LineBorder(colorBordeSuave, 1));
 		panelTabla.setBounds(25, 95, 670, 375);
@@ -233,7 +233,7 @@ public class Clientes extends JFrame implements ActualizableIdioma {
 		modelo.addColumn(Idioma.get("clientes.columnaDireccion"));
 		modelo.addColumn(Idioma.get("clientes.columnaCorreo"));
 
-		tablaClientes = new JTable(modelo);
+		tablaClientes = new EstiloUI.Tabla(modelo);
 		tablaClientes.setFont(new Font("Segoe UI", Font.PLAIN, 13));
 		tablaClientes.setRowHeight(24);
 		tablaClientes.setGridColor(new Color(245, 245, 245));
@@ -278,6 +278,7 @@ public class Clientes extends JFrame implements ActualizableIdioma {
 		controlador = new ControladorCliente(this);
 
 		// NUEVO: ventana autoajustable (SIGEPAN v6), ver Vista.Redimensionable.
+		EstiloUI.aplicar(this, mnClientes);
 		Redimensionable.activar(this, contentPane, 740, 560);
 	}
 
